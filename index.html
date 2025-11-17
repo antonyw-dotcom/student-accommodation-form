@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Accommodation Enquiry</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#f7f7f7; padding:20px; }
+    .container { max-width:700px; margin:0 auto; background:white; padding:24px; border-radius:12px; box-shadow:0 0 10px rgba(0,0,0,0.1); }
+    h1 { text-align:center; margin-bottom:8px; }
+    p.subtitle { text-align:center; margin-top:0; color:#555; }
+    label { font-weight:bold; margin-top:14px; display:block; }
+    input, textarea, select { width:100%; padding:10px; margin-top:5px; border-radius:6px; border:1px solid #ccc; box-sizing:border-box; }
+    .row { display:flex; gap:12px; flex-wrap:wrap; }
+    .row > div { flex:1 1 0; min-width:180px; }
+    small { color:#777; display:block; margin-top:10px; }
+    button { margin-top:22px; padding:12px; width:100%; background:#007bff; color:white; border:none; border-radius:6px; cursor:pointer; font-size:16px; }
+    button:hover { background:#005fcc; }
+    .required { color:#d00; }
+    .honeypot { display:none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Student Accommodation Enquiry</h1>
+    <p class="subtitle">Tell us what you're looking for and we'll get back to you with suitable options.</p>
+
+    <!-- Netlify form -->
+    <form name="student-accommodation-enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="student-accommodation-enquiry" />
+
+      <!-- Honeypot field for spam protection -->
+      <p class="honeypot">
+        <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+      </p>
+
+      <label for="name">Contact name <span class="required">*</span></label>
+      <input type="text" id="name" name="Contact name" required />
+
+      <div class="row">
+        <div>
+          <label for="email">Email address <span class="required">*</span></label>
+          <input type="email" id="email" name="Email" required />
+        </div>
+        <div>
+          <label for="phone">Mobile number</label>
+          <input type="tel" id="phone" name="Phone" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div>
+          <label for="uni">University</label>
+          <input type="text" id="uni" name="University" placeholder="e.g. University of Liverpool" />
+        </div>
+        <div>
+          <label for="year">Year of study</label>
+          <select id="year" name="Year of study">
+            <option value="">Please select</option>
+            <option>1st year</option>
+            <option>2nd year</option>
+            <option>3rd year</option>
+            <option>Postgraduate</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+
+      <label for="areas">Areas you are searching in <span class="required">*</span></label>
+      <input type="text" id="areas" name="Areas" placeholder="e.g. Smithdown, Kensington, Wavertree" required />
+
+      <div class="row">
+        <div>
+          <label for="movein">Preferred move-in date <span class="required">*</span></label>
+          <input type="date" id="movein" name="Move-in date" required />
+        </div>
+        <div>
+          <label for="length">Likely length of tenancy</label>
+          <select id="length" name="Tenancy length">
+            <option value="">Please select</option>
+            <option>6 months</option>
+            <option>9 months (academic year)</option>
+            <option>12 months</option>
+            <option>Other / not sure</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div>
+          <label for="group-size">Size of group <span class="required">*</span></label>
+          <input type="number" id="group-size" name="Group size" min="1" required />
+        </div>
+        <div>
+          <label for="budget">Budget per person per month (£)</label>
+          <input type="number" id="budget" name="Budget (pppm)" min="0" step="10" />
+        </div>
+      </div>
+
+      <label for="property-type">Type of accommodation preferred</label>
+      <select id="property-type" name="Property type">
+        <option value="">Happy with any</option>
+        <option>Shared student house (HMO)</option>
+        <option>En-suite room in shared house</option>
+        <option>Studio</option>
+        <option>1-bed flat</option>
+        <option>Other / not sure</option>
+      </select>
+
+      <label for="requirements">Any specific requirements?</label>
+      <textarea id="requirements" name="Specific requirements" rows="4" placeholder="e.g. parking, bills included, pet-friendly, all en-suites, close to campus, etc."></textarea>
+
+      <label for="how-heard">How did you hear about us?</label>
+      <input type="text" id="how-heard" name="How did you hear about us" placeholder="e.g. Instagram, friend, letting agent, TikTok" />
+
+      <small>By submitting this form you agree that we can contact you about suitable student properties.</small>
+
+      <button type="submit">Submit enquiry</button>
+    </form>
+  </div>
+</body>
+</html>
